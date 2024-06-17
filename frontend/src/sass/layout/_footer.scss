@@ -1,0 +1,12 @@
+.footer {
+  min-height: 8rem;
+  background-color: $color-secondary-dark;
+  color: $color-background-light;
+  text-align: center;
+  padding: 1.2rem;
+  width: 100%;
+
+  &-content {
+    text-align: center;
+  }
+}

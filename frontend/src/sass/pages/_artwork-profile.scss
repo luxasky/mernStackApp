@@ -1,0 +1,14 @@
+.artwork-profile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4rem;
+  column-gap: 4rem;
+
+  h1 {
+    grid-column: 1 / -1;
+  }
+
+  .section-card > :first-child {
+    margin-top: 0;
+  }
+}

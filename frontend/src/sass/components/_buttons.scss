@@ -1,0 +1,48 @@
+.btn {
+  color: #fff;
+  border-radius: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  background-color: $color-secondary-dark;
+
+  padding: 1.2rem 1rem;
+  margin: 1.5rem 0;
+  border: 1px solid #e1e1e1;
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $color-primary;
+    color: #fff;
+  }
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    flex: 1;
+  }
+}
+
+.btn-delete {
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+
+  i {
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+
+    &:hover {
+      color: $color-secondary-light;
+    }
+  }
+}

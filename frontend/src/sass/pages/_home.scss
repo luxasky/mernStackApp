@@ -1,0 +1,26 @@
+.home {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 6rem;
+  padding: 4rem 8rem 6rem 8rem;
+  margin-bottom: 6rem;
+
+  .hero-text {
+    align-self: center;
+
+    h1 {
+      font-size: 2.6rem;
+      text-align: left;
+    }
+
+    .logo-icon {
+      color: $color-background-light;
+    }
+
+    p {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+  }
+}
