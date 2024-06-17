@@ -1,12 +1,23 @@
-# Ignore env variables
+# Backend
 backend/.env
-
-# Ignore the seed file used for tests
-backend/seed.js
-
-# Ignore node_modules in frontend and backend directories
-frontend/node_modules/
 backend/node_modules/
+backend/logs/
+backend/.DS_Store
+backend/seed.js
+backend/package-lock.json
+
+# Frontend
+frontend/.env
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/logs/
+frontend/.DS_Store
+frontend/package-lock.json
+
+
+
+
 
 # Logs
 logs
