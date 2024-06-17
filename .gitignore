@@ -15,8 +15,8 @@ frontend/logs/
 frontend/.DS_Store
 frontend/package-lock.json
 
-
-
+# Ignore MacOS system files
+.DS_Store
 
 
 # Logs
@@ -37,7 +37,6 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
