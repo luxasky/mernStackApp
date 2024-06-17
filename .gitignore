@@ -1,0 +1,10 @@
+# Ignore env variables
+/backend/.env
+
+# Ignore the seed file used for tests
+/backend/seed.js
+
+# Ignore node_modules in frontend and backend directories
+/frontend/node_modules/
+/backend/node_modules/
+
