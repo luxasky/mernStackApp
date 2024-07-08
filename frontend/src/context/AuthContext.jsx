@@ -17,11 +17,14 @@ export const AuthProvider = ({ children }) => {
 
   // Validate the login session
   useEffect(() => {
-    axios
-      .get('http://localhost:4000/api/users/is-valid-session', {
-        withCredentials: true
-      })
-      .then(res => {
+    const validateSession = async () => {
+      try {
+        const res = await axios.get(
+          'http://localhost:4000/api/users/is-valid-session',
+          {
+            withCredentials: true
+          }
+        );
         console.log(
           res.data.isAuth === true
             ? 'res.data.isAuth is TRUE = User Logged In'
@@ -30,12 +33,17 @@ export const AuthProvider = ({ children }) => {
         // State updates based on the response from the server
         setIsLoggedIn(res.data.isAuth);
         setCurUserId(res.data.userId);
-      })
-      .catch(error => {
+
+        console.log('isAuth:', res.data.isAuth);
+        console.log('userId:', res.data.userId);
+      } catch (error) {
         console.log('Error validating session:', error);
         setIsLoggedIn(false);
         setCurUserId(null);
-      });
+      }
+    };
+
+    validateSession();
   }, []);
 
   // Provide values from Auth Context to all children components

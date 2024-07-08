@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+// import { useContext } from 'react';
+// import { ArtworksContext } from '../context/ArtworksContext';
 import ArtworkForm from '../components/ArtworkForm';
 
 function AddArtwork() {

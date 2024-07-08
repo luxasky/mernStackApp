@@ -41,7 +41,14 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="/artworks/:id" element={<ArtworkProfile />} />
+            <Route
+              path="/artworks/:id"
+              element={
+                <PrivateRoute>
+                  <ArtworkProfile />
+                </PrivateRoute>
+              }
+            />
             <Route path="/logout" element={<LogoutForm />} />
           </Routes>
         </div>

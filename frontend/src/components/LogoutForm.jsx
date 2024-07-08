@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 
 function LogoutForm() {
-  const { setIsLoggedIn } = useContext(AuthContext);
+  const { setIsLoggedIn, setCurUserId } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogout = e => {
@@ -15,6 +15,8 @@ function LogoutForm() {
       .then(res => {
         console.log('Logout Success', res.data);
         setIsLoggedIn(false);
+        setCurUserId(null);
+
         navigate('/');
       })
       .catch(err => console.error('Failed to logout', err));

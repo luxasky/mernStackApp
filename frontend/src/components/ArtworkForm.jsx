@@ -1,13 +1,15 @@
-import { useState } from 'react';
-import axios from 'axios';
-
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+/* eslint-disable react/prop-types */
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import * as Yup from 'yup';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { ArtworksContext } from '../context/ArtworksContext';
 
 function ArtworkForm() {
   const navigate = useNavigate();
   const [imgFile, setImgFile] = useState(null);
+  const { setArtworks } = useContext(ArtworksContext);
 
   const initialValues = {
     title: '',
@@ -26,7 +28,6 @@ function ArtworkForm() {
   const handleAddArtwork = (values, { setSubmitting, resetForm }) => {
     const formData = new FormData();
     formData.append('image', imgFile); // append image file to formData
-
     // Upload image to Cloudinary
     axios
       .post('http://localhost:4000/api/artworks/upload', formData, {
@@ -51,19 +52,22 @@ function ArtworkForm() {
           }
         );
       })
-      .then(res => {
-        console.log(res);
-        navigate('/my-portfolio'); // after new artwork is created, go to the updated portfolio page
+      .then(newArtwork => {
+        setArtworks(a => {
+          const updatedArtworks = [...a, newArtwork.data];
+          console.log('Updated artworks:', updatedArtworks);
+          return updatedArtworks;
+        });
+        navigate('/my-portfolio');
       })
-
       .catch(error => {
-        console.error('Error:', error);
+        console.error('Error adding new artwork', error);
       })
       .finally(() => {
         // Reset form submission state and its fields
         setSubmitting(false);
-        setImgFile(null);
         resetForm();
+        setImgFile(null);
       });
   };
 

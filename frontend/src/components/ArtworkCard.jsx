@@ -29,7 +29,6 @@ function ArtworkCard({ artwork, deleteArtworkFromGallery, isDeleteButton }) {
         // the props function for updating artworks state
         if (deleteArtworkFromGallery) {
           deleteArtworkFromGallery(id);
-
           navigate('/my-portfolio'); // return to portfolio page after deleting an artwork
         } else {
           console.log(

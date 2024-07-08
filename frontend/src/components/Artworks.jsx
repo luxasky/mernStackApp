@@ -1,24 +1,11 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-
+/* eslint-disable react/prop-types */
+import { useContext } from 'react';
 import ArtworkCard from './ArtworkCard';
+import { ArtworksContext } from '../context/ArtworksContext';
 
-function Artworks() {
-  // Define state to keep track of all existing artworks
-  const [artworks, setArtworks] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:4000/api/artworks', { withCredentials: true })
-      .then(res => {
-        console.log('Fetched artworks:', res.data);
-        // Update the artworks state after fetching all artworks
-        setArtworks(res.data);
-      })
-      .catch(err => {
-        console.error('Error fetching artworks:', err);
-      });
-  }, []);
+function Artworks({ artworks }) {
+  // Get artworks state setter from the context
+  const { setArtworks } = useContext(ArtworksContext);
 
   // Handle state change of artworks array
   function handleDeleteArtwork(id) {
@@ -27,16 +14,15 @@ function Artworks() {
 
   return (
     <ul className="artworks">
-      {artworks.map(artwork => {
-        return (
+      {Array.isArray(artworks) &&
+        artworks.map(artwork => (
           <ArtworkCard
             key={artwork._id} // key required for each item of Artworks list
-            artwork={artwork} // artwork data
+            artwork={artwork}
             deleteArtworkFromGallery={handleDeleteArtwork} // handle artwork deletion
             isDeleteButton={false} // hide delete button when showing all artworks
           />
-        );
-      })}
+        ))}
     </ul>
   );
 }
