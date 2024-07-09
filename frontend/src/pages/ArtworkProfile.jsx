@@ -42,7 +42,7 @@ function ArtworkProfile() {
 
   return (
     <div className="artwork-profile">
-      <h1>Artwork Profile Page</h1>
+      <h1 className="cursive">Artwork Profile Page</h1>
       <div className="section-card">
         <ArtworkCard
           artwork={artData}

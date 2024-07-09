@@ -10,7 +10,7 @@ function ArtGallery() {
   return (
     <>
       <div className="gallery">
-        <h1>Art Gallery Page</h1>
+        <h1 className="cursive">Art Gallery Page</h1>
         {/* Shows all existing artworks in the gallery */}
         <Artworks
           key={artworks.length}

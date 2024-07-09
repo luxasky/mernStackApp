@@ -1,20 +1,21 @@
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import LoginForm from '../components/LoginForm';
-import LogoutForm from '../components/LogoutForm';
+import WelcomeMessage from '../components/WelcomeMessage';
 
 function Home() {
   // Get login state from the auth context
   const { isLoggedIn } = useContext(AuthContext);
 
-  return (
+  return isLoggedIn ? (
+    <WelcomeMessage />
+  ) : (
     <div className="home">
-      {/* <h1>Welcome to Your Art Portfolio </h1> */}
       <div className="hero-text">
-        <h1>Home Page</h1>
-        <p>Create, share, and explore unique artworks.</p>
+        <h1 className="cursive">Home Page</h1>
+        <p>Please login into your account</p>
       </div>
-      {isLoggedIn ? <LogoutForm /> : <LoginForm />}
+      <LoginForm />
     </div>
   );
 }

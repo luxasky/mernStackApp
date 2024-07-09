@@ -10,7 +10,7 @@
     align-self: center;
 
     h1 {
-      font-size: 2.6rem;
+      font-size: 5.6rem;
       text-align: left;
     }
 
@@ -21,6 +21,21 @@
     p {
       font-size: 1.1rem;
       text-transform: uppercase;
+    }
+  }
+
+  &-welcome {
+    color: $color-secondary-dark;
+    font-style: italic;
+    transform: translateY(-70%);
+
+    h1 {
+      font-size: 4.8rem;
+    }
+
+    p {
+      font-size: 2.4rem;
+      text-align: center;
     }
   }
 }

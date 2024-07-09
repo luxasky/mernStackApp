@@ -49,7 +49,7 @@ function MyPortfolio() {
 
   return (
     <div className="portfolio">
-      <h1>Portfolio Page</h1>
+      <h1 className="cursive">Portfolio Page</h1>
       {/* Display artworks of the current user only, i.e. their personal portfolio */}
       <Artworks key={userArtworks.length} artworks={userArtworks} />
     </div>
