@@ -21,7 +21,7 @@ export const ArtworksProvider = ({ children }) => {
       .catch(error => {
         console.error('Error fetching artworks:', error);
       });
-  }, []);
+  }, [artworks]);
 
   return (
     <ArtworksContext.Provider

@@ -2,14 +2,31 @@
 
 // Import axios for http requests, hooks and context values
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
+import PopupMsg from './PopupMsg';
 
 function ArtworkCard({ artwork, deleteArtworkFromGallery, isDeleteButton }) {
   // Destructure Auth Context values
   const { isLoggedIn, curUserId } = useContext(AuthContext);
+  const [isVisible, setIsVisible] = useState(false);
+  const [popupMsg, setPopupMsg] = useState(null);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (popupMsg) {
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+        setPopupMsg(null);
+        navigate('/my-portfolio');
+      }, 2000);
+
+      // Clear the timeout
+      return () => clearTimeout(timer);
+    }
+  }, [navigate, popupMsg, setIsVisible]);
 
   // Go to the individual artwork's page
   function handleArtworkClick(id) {
@@ -20,24 +37,20 @@ function ArtworkCard({ artwork, deleteArtworkFromGallery, isDeleteButton }) {
   function handleClickDeleteIcon(e, id) {
     // stop event from bubbling up onto other elements
     e.stopPropagation();
-
     axios
       .delete(`http://localhost:4000/api/artworks/${id}`, {
         withCredentials: true // includes cookies in the request
       })
       .then(() => {
-        // the props function for updating artworks state
-        if (deleteArtworkFromGallery) {
-          deleteArtworkFromGallery(id);
-          navigate('/my-portfolio'); // return to portfolio page after deleting an artwork
-        } else {
-          console.log(
-            'deleteArtworkFromGallery UNIDEFINED:',
-            deleteArtworkFromGallery
-          );
-        }
+        deleteArtworkFromGallery(id);
+        setPopupMsg('Artwork has been deleted');
+        setIsVisible(true);
       })
-      .catch(err => console.log('Error deleting artwork:', err));
+      .catch(err => {
+        console.error('Error! Artwork not deleted!', err);
+        setPopupMsg('Failed to delete artwork');
+        setIsVisible(true);
+      });
   }
 
   // Display 'Unknown Artist' if the username is missing
@@ -50,30 +63,33 @@ function ArtworkCard({ artwork, deleteArtworkFromGallery, isDeleteButton }) {
   const isAuthorised = artwork.user && curUserId === artwork.user._id;
 
   return (
-    <li
-      className="artwork"
-      onClick={() => {
-        handleArtworkClick(artwork._id);
-      }}>
-      <div className="artwork-title">
-        <div>
-          <span>{artwork.title} </span>
-          {'  '}
-          <span>By {username}</span>
+    <>
+      <li
+        className="artwork"
+        onClick={() => {
+          handleArtworkClick(artwork._id);
+        }}>
+        <div className="artwork-title">
+          <div>
+            <span>{artwork.title} </span>
+            {'  '}
+            <span>By {username}</span>
+          </div>
+          {isLoggedIn && isAuthorised && isDeleteButton && (
+            <button
+              className="btn btn-delete"
+              onClick={e => handleClickDeleteIcon(e, artwork._id)}>
+              <i className="fa-solid fa-trash"></i>
+            </button>
+          )}
         </div>
-        {isLoggedIn && isAuthorised && isDeleteButton && (
-          <button
-            className="btn btn-delete"
-            onClick={e => handleClickDeleteIcon(e, artwork._id)}>
-            <i className="fa-solid fa-trash"></i>
-          </button>
-        )}
-      </div>
-      <div className="artwork-card">
-        <img src={artwork.imageUrl} alt={artwork.title} />
-      </div>
-      <div className="artwork-description">{artwork.description}</div>
-    </li>
+        {isVisible && <PopupMsg popupMsg={popupMsg} />}
+        <div className="artwork-card">
+          <img src={artwork.imageUrl} alt={artwork.title} />
+        </div>
+        <div className="artwork-description">{artwork.description}</div>
+      </li>
+    </>
   );
 }
 

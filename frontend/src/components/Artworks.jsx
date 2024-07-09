@@ -13,17 +13,19 @@ function Artworks({ artworks }) {
   }
 
   return (
-    <ul className="artworks">
-      {Array.isArray(artworks) &&
-        artworks.map(artwork => (
-          <ArtworkCard
-            key={artwork._id} // key required for each item of Artworks list
-            artwork={artwork}
-            deleteArtworkFromGallery={handleDeleteArtwork} // handle artwork deletion
-            isDeleteButton={false} // hide delete button when showing all artworks
-          />
-        ))}
-    </ul>
+    <>
+      <ul className="artworks">
+        {Array.isArray(artworks) &&
+          artworks.map(artwork => (
+            <ArtworkCard
+              key={artwork._id} // key required for each item of Artworks list
+              artwork={artwork}
+              deleteArtworkFromGallery={handleDeleteArtwork} // handle artwork deletion
+              isDeleteButton={false} // hide delete button when showing all artworks
+            />
+          ))}
+      </ul>
+    </>
   );
 }
 

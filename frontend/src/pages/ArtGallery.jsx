@@ -2,7 +2,6 @@
 import Artworks from '../components/Artworks';
 import { useContext } from 'react';
 
-import { AuthContext } from '../context/AuthContext';
 import { ArtworksContext } from '../context/ArtworksContext';
 
 function ArtGallery() {

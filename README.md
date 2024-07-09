@@ -215,7 +215,7 @@ Objective: To verify that the user can log in with valid credentials.
 
 📉 Test Results: 
 
-CHECK !!! - The user should be redirected to the portfolio page, i.e. `My_Portfolio`
+✅The user should be redirected to the updated `Home` page, showing the welcome message.
 CHECK !!! - A welcome message should be displayed.
 
 
@@ -249,19 +249,20 @@ Objective: Check the functionality of creating an artwork post with an image upl
 2. Fill in the "Artwork Form" with the artwork "Title" and "Description" fields.
 3. Choose a valid image file for upload ⬆️.
 4. Click the `Add Artwork` button.
+5. Once the form is successfully submitted, the user will be redirected to `My_Portfolio` page, where the updated collection of artworks will be displayed in order, showing the most recent artworks first.
 
 📉 Test Results: 
 
 ✅ The artwork should be added to the user's portfolio.
 ✅ The user should be redirected to their `My_Portfolio` page and see their new artwork post added. It should be displayed on top of the previous posts.
-✅ The new artwork should display on the `My_Portfolio` (portfolio) page.
+✅ The new artwork should display on the `My_Portfolio` (portfolio) page, displaying the new artwork at the top of the page.
 
 # Test Case 4: **Deleting Artwork**
 Objective: To ensure that users can delete their artwork.
 
 📝 Preconditions: 
 - User has at least one artwork in their portfolio.
-- User is logged in and is trying to delete on of their own artworks.
+- User is logged in and trying to delete one of their own artworks.
 
 🧭 Steps:
 
@@ -274,9 +275,9 @@ Objective: To ensure that users can delete their artwork.
 📉 Test Results: 
 
 ✅ The artwork will be removed both from the Mongo database and Cloudinary storage.
+✅ The user is redirected to their portfolio page which no longer displays the deleted artwork.
 ✅ The portfolio page should no longer display the deleted artwork.
-
-❌ CHECK AGAIN - A confirmation message should appear confirming the deletion.
+✅ A confirmation appears confirming the deletion and redirects the user to the updated portfolio page.
 
 
 ## FEEDBACK
@@ -289,7 +290,8 @@ The design choices that you made are sufficient for your project.
 
 Please include the changes to your proposal and why you made them. If there are no, please name that.
 
-2. **Provide test cases and data**
+
+-- UPDATED ✅ 2. **Provide test cases and data**
 
 Please provide test cases and data. You can write them as actions to be undertaken and expected results, e.g. click on button X / message Y is shown.
 
@@ -297,7 +299,7 @@ Please provide test cases and data. You can write them as actions to be undertak
 
 Your screencast would benefit from a voice-over or subtitles.
 
-4. **Missing installation instructions**
+-- UPDATED ✅  4. **Missing installation instructions**
 
 Your repository is missing installation instructions. Please put them into the readme file.
 
