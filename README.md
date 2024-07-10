@@ -215,8 +215,8 @@ Objective: To verify that the user can log in with valid credentials.
 
 📉 Test Results: 
 
-✅The user should be redirected to the updated `Home` page, showing the welcome message.
-CHECK !!! - A welcome message should be displayed.
+✅ The user should be redirected to the updated `Home` page, showing the welcome message.
+✅ A welcome message is displayed.
 
 
 ### Test Case 2: **User Registration**
@@ -257,7 +257,7 @@ Objective: Check the functionality of creating an artwork post with an image upl
 ✅ The user should be redirected to their `My_Portfolio` page and see their new artwork post added. It should be displayed on top of the previous posts.
 ✅ The new artwork should display on the `My_Portfolio` (portfolio) page, displaying the new artwork at the top of the page.
 
-# Test Case 4: **Deleting Artwork**
+### Test Case 4: **Deleting Artwork**
 Objective: To ensure that users can delete their artwork.
 
 📝 Preconditions: 
@@ -279,23 +279,22 @@ Objective: To ensure that users can delete their artwork.
 ✅ The portfolio page should no longer display the deleted artwork.
 ✅ A confirmation appears confirming the deletion and redirects the user to the updated portfolio page.
 
-
-## FEEDBACK
+--------------------------------------------------------------------------------------------------------------------------------------------
+# Finalising based on FEEDBACK
 
 -- UPDATED DIAGRAM ✅ **Your architecture has an issue**: there is no line back from backend to frontend following the C4 model notation.
 
 The design choices that you made are sufficient for your project.
 
-1. **Include the changes**
+-- UPDATED ✅ 1. **Include the changes**
 
 Please include the changes to your proposal and why you made them. If there are no, please name that.
-
 
 -- UPDATED ✅ 2. **Provide test cases and data**
 
 Please provide test cases and data. You can write them as actions to be undertaken and expected results, e.g. click on button X / message Y is shown.
 
-3. **Voice-over or subtitles**
+-- UPDATED ADDED SUBS ✅ 3. **Voice-over or subtitles**
 
 Your screencast would benefit from a voice-over or subtitles.
 
