@@ -305,4 +305,4 @@ Your repository is missing installation instructions. Please put them into the r
 5. **Add more web responsiveness**
 Your app is responsive as it runs on mobile devices. However, some views like the shown list of artworks can be further optimized for mobile devices, especially those with small screens.
 
--- You can continue with the final phase now. You can submit a revised version of this document during the final submission.
+-- You can continue with the final phase now. You can submit a revised version of this document during the final submission.rm 
